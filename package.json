@@ -4,11 +4,12 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
-    "start": "node server/server.js",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "build": "cd client && npm run build --only-dev",
-    "render-build": "npm install && npm run build"
+    "build:client": "cd ./client && npm run build",
+    "add": "git add -A",
+    "commit": "git commit -m \"ready for deploy\"",
+    "deploy": "npm run build:client && npm run add && npm run commit && git push heroku HEAD:main",
+    "dev": "concurrently \"cd ./client && npm run dev\" \"cd ./server && npm run dev\"",
+    "start": "cd ./server && npm start"
   },
   "keywords": [],
   "author": "",
